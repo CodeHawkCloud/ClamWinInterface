@@ -1,0 +1,463 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package clamwin.antivirus;
+
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Calendar;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+
+/**
+ *
+ * @author HP
+ */
+public class PreferencesScheduledAddNew extends javax.swing.JFrame {
+    
+    private BufferedImage closeImage = null;
+    private BufferedImage minimizeImage = null;
+    private BufferedImage folderImage = null;
+    private BufferedImage lineImage = null;
+
+    /**
+     * Creates new form PreferencesScheduledAddNew
+     */
+    public PreferencesScheduledAddNew() {
+        initComponents();
+        iconSet();
+        getAndScaleCloseButtonImage();
+        getAndScaleMinimizeButtonImage();
+        getAndScaleImages();
+        spinnerSetUp();
+        cursorChange();
+    }
+    
+    private void iconSet(){
+        
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/mainIcon.png")));
+    }
+    
+    //scaling the image according to the jlabel
+    private void getAndScaleCloseButtonImage(){
+        
+        try {
+
+            closeImage = ImageIO.read(this.getClass().getResource("/images/closeButton.png"));
+            
+	} catch (IOException e) {
+            
+            e.printStackTrace();
+            
+	}
+        
+	//buffered image scaled
+	Image closeBtnDimensions = closeImage.getScaledInstance(lbl_btn_preferencesScheduledAddNew_close.getWidth(), lbl_btn_preferencesScheduledAddNew_close.getHeight(),Image.SCALE_SMOOTH);
+	ImageIcon closeIcon = new ImageIcon(closeBtnDimensions);
+				
+	//icon set
+	lbl_btn_preferencesScheduledAddNew_close.setIcon(closeIcon);
+        
+    }
+    
+    //scaling the image according to the jlabel
+    private void getAndScaleMinimizeButtonImage(){
+        
+        try {
+
+            minimizeImage = ImageIO.read(this.getClass().getResource("/images/minimize.png"));
+            
+	} catch (IOException e) {
+            
+            e.printStackTrace();
+            
+	}
+        
+	//buffered image scaled
+	Image minimizeBtnDimensions = minimizeImage.getScaledInstance(lbl_btn_preferencesScheduledAddNew_minimize.getWidth(), lbl_btn_preferencesScheduledAddNew_minimize.getHeight(),Image.SCALE_SMOOTH);
+	ImageIcon MinimizeIcon = new ImageIcon(minimizeBtnDimensions);
+				
+	//icon set
+	lbl_btn_preferencesScheduledAddNew_minimize.setIcon(MinimizeIcon);
+        
+    }
+    
+    private void getAndScaleImages(){
+        
+        try {
+
+            folderImage = ImageIO.read(this.getClass().getResource("/images/browse.png"));
+            
+	} catch (IOException e) {
+            
+            e.printStackTrace();
+            
+	}
+        
+	//buffered image scaled
+	Image folderBtnDimensions = folderImage.getScaledInstance(preferencesScheduledAddNew_lblicon_browse.getWidth(), preferencesScheduledAddNew_lblicon_browse.getHeight(),Image.SCALE_SMOOTH);
+	ImageIcon folderIcon = new ImageIcon(folderBtnDimensions);
+				
+	//icon set
+	preferencesScheduledAddNew_lblicon_browse.setIcon(folderIcon);
+        
+        //line
+        try {
+
+            lineImage = ImageIO.read(this.getClass().getResource("/images/minimize.png"));
+            
+	} catch (IOException e) {
+            
+            e.printStackTrace();
+            
+	}
+        
+	//buffered image scaled
+	Image lineDimensions = lineImage.getScaledInstance(preferencesScheduledAddNew_lblicon_line.getWidth(), preferencesScheduledAddNew_lblicon_line.getHeight(),Image.SCALE_SMOOTH);
+	ImageIcon lineIcon = new ImageIcon(lineDimensions);
+				
+	//icon set
+	preferencesScheduledAddNew_lblicon_line.setIcon(lineIcon);
+        
+        
+        
+    }
+    
+    //change cursor to hand
+    private void cursorChange(){
+        lbl_btn_preferencesScheduledAddNew_close.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lbl_btn_preferencesScheduledAddNew_minimize.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }
+    
+    private void spinnerSetUp(){
+        
+        SpinnerDateModel spinnerModel = new SpinnerDateModel();
+        spinnerModel.setCalendarField(Calendar.MINUTE);
+        
+        preferencesScheduledAddNew_spinner_time.setModel(spinnerModel);
+        preferencesScheduledAddNew_spinner_time.setEditor(new JSpinner.DateEditor(preferencesScheduledAddNew_spinner_time , "hh:mm:ss"));
+        
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        panel_preferencesScheduledAddNew_top = new javax.swing.JPanel();
+        lbl_preferencesScheduledAddNew_title = new javax.swing.JLabel();
+        lbl_btn_preferencesScheduledAddNew_minimize = new javax.swing.JLabel();
+        lbl_btn_preferencesScheduledAddNew_close = new javax.swing.JLabel();
+        preferencesScheduledAddNew_outerFrame = new javax.swing.JPanel();
+        preferencesScheduledAddNew_innerFrame = new javax.swing.JPanel();
+        preferencesScheduledAddNew_lbl_heading1 = new javax.swing.JLabel();
+        preferencesScheduledAddNew_lbl_heading2 = new javax.swing.JLabel();
+        preferencesScheduledAddNew_lbl_description = new javax.swing.JLabel();
+        preferencesScheduledAddNew_lbl_frequency = new javax.swing.JLabel();
+        preferencesScheduledAddNew_lbl_day = new javax.swing.JLabel();
+        preferencesScheduledAddNew_lbl_scanFolder = new javax.swing.JLabel();
+        preferencesScheduledAddNew_lbl_time = new javax.swing.JLabel();
+        preferences_advanced_cb_extractAttachments = new javax.swing.JCheckBox();
+        preferences_advanced_cb_extractAttachments1 = new javax.swing.JCheckBox();
+        preferencesScheduledAddNew_textField_scanFolder = new javax.swing.JTextField();
+        preferencesScheduledAddNew_textField_frequency = new javax.swing.JTextField();
+        preferencesScheduledAddNew_lblicon_browse = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        preferencesScheduledAddNew_textArea_description = new javax.swing.JTextArea();
+        preferencesScheduledAddNew_dropDown_day = new javax.swing.JComboBox();
+        preferencesScheduledAddNew_spinner_time = new javax.swing.JSpinner();
+        preferencesScheduledAddNew_lblicon_line = new javax.swing.JLabel();
+        preferencesScheduledAddNew_btn_cancel = new java.awt.Button();
+        preferencesScheduledAddNew_btn_save = new java.awt.Button();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel_preferencesScheduledAddNew_top.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_preferencesScheduledAddNew_title.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        lbl_preferencesScheduledAddNew_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_preferencesScheduledAddNew_title.setText("ClamWin Preferences");
+        lbl_preferencesScheduledAddNew_title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        panel_preferencesScheduledAddNew_top.add(lbl_preferencesScheduledAddNew_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 670, 20));
+
+        lbl_btn_preferencesScheduledAddNew_minimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_btn_preferencesScheduledAddNew_minimizeMouseClicked(evt);
+            }
+        });
+        panel_preferencesScheduledAddNew_top.add(lbl_btn_preferencesScheduledAddNew_minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 20, 10));
+
+        lbl_btn_preferencesScheduledAddNew_close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_btn_preferencesScheduledAddNew_closeMouseClicked(evt);
+            }
+        });
+        panel_preferencesScheduledAddNew_top.add(lbl_btn_preferencesScheduledAddNew_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 20, 20));
+
+        getContentPane().add(panel_preferencesScheduledAddNew_top, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 20));
+
+        preferencesScheduledAddNew_outerFrame.setBackground(new java.awt.Color(64, 55, 110));
+        preferencesScheduledAddNew_outerFrame.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        preferencesScheduledAddNew_innerFrame.setBackground(new java.awt.Color(204, 204, 204));
+        preferencesScheduledAddNew_innerFrame.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        preferencesScheduledAddNew_lbl_heading1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        preferencesScheduledAddNew_lbl_heading1.setText("Set Scheduled Scan");
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_lbl_heading1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 220, 20));
+
+        preferencesScheduledAddNew_lbl_heading2.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        preferencesScheduledAddNew_lbl_heading2.setText("Scheduled Scan Settings");
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_lbl_heading2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 350, 20));
+
+        preferencesScheduledAddNew_lbl_description.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        preferencesScheduledAddNew_lbl_description.setText("Description");
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_lbl_description, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 80, 20));
+
+        preferencesScheduledAddNew_lbl_frequency.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        preferencesScheduledAddNew_lbl_frequency.setText("Scanning Frequency");
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_lbl_frequency, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 120, 30));
+
+        preferencesScheduledAddNew_lbl_day.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        preferencesScheduledAddNew_lbl_day.setText("Day of the week");
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_lbl_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 110, 30));
+
+        preferencesScheduledAddNew_lbl_scanFolder.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        preferencesScheduledAddNew_lbl_scanFolder.setText("Scan folder");
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_lbl_scanFolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 80, 20));
+
+        preferencesScheduledAddNew_lbl_time.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        preferencesScheduledAddNew_lbl_time.setText("Time");
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_lbl_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 40, 30));
+
+        preferences_advanced_cb_extractAttachments.setBackground(new java.awt.Color(204, 204, 204));
+        preferences_advanced_cb_extractAttachments.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        preferences_advanced_cb_extractAttachments.setText("Scan programs loaded in computer memory");
+        preferences_advanced_cb_extractAttachments.setToolTipText("Select to scan memory");
+        preferences_advanced_cb_extractAttachments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preferences_advanced_cb_extractAttachmentsActionPerformed(evt);
+            }
+        });
+        preferencesScheduledAddNew_innerFrame.add(preferences_advanced_cb_extractAttachments, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 420, -1));
+
+        preferences_advanced_cb_extractAttachments1.setBackground(new java.awt.Color(204, 204, 204));
+        preferences_advanced_cb_extractAttachments1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        preferences_advanced_cb_extractAttachments1.setText("Activate above schedule");
+        preferences_advanced_cb_extractAttachments1.setToolTipText("Select to activate the above stated schedule");
+        preferences_advanced_cb_extractAttachments1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preferences_advanced_cb_extractAttachments1ActionPerformed(evt);
+            }
+        });
+        preferencesScheduledAddNew_innerFrame.add(preferences_advanced_cb_extractAttachments1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 420, -1));
+
+        preferencesScheduledAddNew_textField_scanFolder.setEditable(false);
+        preferencesScheduledAddNew_textField_scanFolder.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_textField_scanFolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 260, 30));
+
+        preferencesScheduledAddNew_textField_frequency.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_textField_frequency, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 310, 30));
+
+        preferencesScheduledAddNew_lblicon_browse.setText("jLabel8");
+        preferencesScheduledAddNew_lblicon_browse.setToolTipText("Browse for scan folder");
+        preferencesScheduledAddNew_lblicon_browse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        preferencesScheduledAddNew_lblicon_browse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                preferencesScheduledAddNew_lblicon_browseMouseClicked(evt);
+            }
+        });
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_lblicon_browse, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, 30, 30));
+
+        preferencesScheduledAddNew_textArea_description.setColumns(20);
+        preferencesScheduledAddNew_textArea_description.setRows(5);
+        jScrollPane1.setViewportView(preferencesScheduledAddNew_textArea_description);
+
+        preferencesScheduledAddNew_innerFrame.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 310, 60));
+
+        preferencesScheduledAddNew_dropDown_day.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
+        preferencesScheduledAddNew_dropDown_day.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_dropDown_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 120, 30));
+
+        preferencesScheduledAddNew_spinner_time.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_spinner_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 110, 30));
+
+        preferencesScheduledAddNew_lblicon_line.setText("jLabel9");
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_lblicon_line, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 440, -1));
+
+        preferencesScheduledAddNew_btn_cancel.setBackground(new java.awt.Color(173, 159, 175));
+        preferencesScheduledAddNew_btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        preferencesScheduledAddNew_btn_cancel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        preferencesScheduledAddNew_btn_cancel.setForeground(new java.awt.Color(255, 4, 4));
+        preferencesScheduledAddNew_btn_cancel.setLabel("Cancel");
+        preferencesScheduledAddNew_btn_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                preferencesScheduledAddNew_btn_cancelMouseClicked(evt);
+            }
+        });
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 130, 40));
+
+        preferencesScheduledAddNew_btn_save.setBackground(new java.awt.Color(173, 159, 175));
+        preferencesScheduledAddNew_btn_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        preferencesScheduledAddNew_btn_save.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        preferencesScheduledAddNew_btn_save.setForeground(new java.awt.Color(28, 111, 56));
+        preferencesScheduledAddNew_btn_save.setLabel("Save Changes");
+        preferencesScheduledAddNew_btn_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preferencesScheduledAddNew_btn_saveActionPerformed(evt);
+            }
+        });
+        preferencesScheduledAddNew_innerFrame.add(preferencesScheduledAddNew_btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 130, 40));
+
+        preferencesScheduledAddNew_outerFrame.add(preferencesScheduledAddNew_innerFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 780, 420));
+
+        getContentPane().add(preferencesScheduledAddNew_outerFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 780, 500));
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void lbl_btn_preferencesScheduledAddNew_minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_btn_preferencesScheduledAddNew_minimizeMouseClicked
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_lbl_btn_preferencesScheduledAddNew_minimizeMouseClicked
+
+    private void lbl_btn_preferencesScheduledAddNew_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_btn_preferencesScheduledAddNew_closeMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_lbl_btn_preferencesScheduledAddNew_closeMouseClicked
+
+    private void preferences_advanced_cb_extractAttachmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preferences_advanced_cb_extractAttachmentsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_preferences_advanced_cb_extractAttachmentsActionPerformed
+
+    private void preferences_advanced_cb_extractAttachments1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preferences_advanced_cb_extractAttachments1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_preferences_advanced_cb_extractAttachments1ActionPerformed
+
+    //save button
+    private void preferencesScheduledAddNew_btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preferencesScheduledAddNew_btn_saveActionPerformed
+        
+        int userReply;
+        
+        userReply = JOptionPane.showConfirmDialog(null,"Are you sure you want to save the changes you made?", "Save Changes", JOptionPane.YES_NO_OPTION);
+        
+        if(userReply == JOptionPane.YES_OPTION){
+            
+            /*saving block of code*/
+            JOptionPane savingSuccessOptionPane = new JOptionPane("Changes saved successfully !", JOptionPane.INFORMATION_MESSAGE);
+                  
+            JDialog savingSuccessDialog = savingSuccessOptionPane.createDialog(null, "ClamWin Free Antivirus");
+            savingSuccessDialog.setModal(true);
+            savingSuccessDialog.setVisible(true);
+            
+            this.dispose();
+            
+        }else{
+            
+            
+        }
+        
+         
+    }//GEN-LAST:event_preferencesScheduledAddNew_btn_saveActionPerformed
+
+    //browse button
+    private void preferencesScheduledAddNew_lblicon_browseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preferencesScheduledAddNew_lblicon_browseMouseClicked
+        
+        preferencesScheduledAddNewFileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        preferencesScheduledAddNewFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int result = preferencesScheduledAddNewFileChooser.showOpenDialog(this);
+        
+        if (result == preferencesScheduledAddNewFileChooser.APPROVE_OPTION) {
+            File chosenFile = preferencesScheduledAddNewFileChooser.getSelectedFile();
+            preferencesScheduledAddNew_textField_scanFolder.setText(chosenFile.getAbsolutePath());
+        }
+    }//GEN-LAST:event_preferencesScheduledAddNew_lblicon_browseMouseClicked
+
+    //cancel button
+    private void preferencesScheduledAddNew_btn_cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preferencesScheduledAddNew_btn_cancelMouseClicked
+
+            
+        this.dispose();
+    }//GEN-LAST:event_preferencesScheduledAddNew_btn_cancelMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PreferencesScheduledAddNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PreferencesScheduledAddNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PreferencesScheduledAddNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PreferencesScheduledAddNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PreferencesScheduledAddNew().setVisible(true);
+            }
+        });
+    }
+
+    JFileChooser preferencesScheduledAddNewFileChooser = new JFileChooser();
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_btn_preferencesScheduledAddNew_close;
+    private javax.swing.JLabel lbl_btn_preferencesScheduledAddNew_minimize;
+    private javax.swing.JLabel lbl_preferencesScheduledAddNew_title;
+    private javax.swing.JPanel panel_preferencesScheduledAddNew_top;
+    private java.awt.Button preferencesScheduledAddNew_btn_cancel;
+    private java.awt.Button preferencesScheduledAddNew_btn_save;
+    private javax.swing.JComboBox preferencesScheduledAddNew_dropDown_day;
+    private javax.swing.JPanel preferencesScheduledAddNew_innerFrame;
+    private javax.swing.JLabel preferencesScheduledAddNew_lbl_day;
+    private javax.swing.JLabel preferencesScheduledAddNew_lbl_description;
+    private javax.swing.JLabel preferencesScheduledAddNew_lbl_frequency;
+    private javax.swing.JLabel preferencesScheduledAddNew_lbl_heading1;
+    private javax.swing.JLabel preferencesScheduledAddNew_lbl_heading2;
+    private javax.swing.JLabel preferencesScheduledAddNew_lbl_scanFolder;
+    private javax.swing.JLabel preferencesScheduledAddNew_lbl_time;
+    private javax.swing.JLabel preferencesScheduledAddNew_lblicon_browse;
+    private javax.swing.JLabel preferencesScheduledAddNew_lblicon_line;
+    private javax.swing.JPanel preferencesScheduledAddNew_outerFrame;
+    private javax.swing.JSpinner preferencesScheduledAddNew_spinner_time;
+    private javax.swing.JTextArea preferencesScheduledAddNew_textArea_description;
+    private javax.swing.JTextField preferencesScheduledAddNew_textField_frequency;
+    private javax.swing.JTextField preferencesScheduledAddNew_textField_scanFolder;
+    private javax.swing.JCheckBox preferences_advanced_cb_extractAttachments;
+    private javax.swing.JCheckBox preferences_advanced_cb_extractAttachments1;
+    // End of variables declaration//GEN-END:variables
+}
